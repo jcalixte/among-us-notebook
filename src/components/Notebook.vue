@@ -10,7 +10,11 @@
         @suspect="suspect"
       />
       <div class="gommettes">
-        <div v-for="suspected in suspects[crewmate]" :key="suspected">
+        <div
+          v-for="suspected in suspects[crewmate]"
+          :key="suspected"
+          class="suspect"
+        >
           🔴
         </div>
       </div>
@@ -56,6 +60,11 @@ export default defineComponent({
       flex: 1;
       display: flex;
       justify-content: center;
+
+      .suspect {
+        font-size: 40px;
+        margin: 0 1rem;
+      }
     }
   }
 }

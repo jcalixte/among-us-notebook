@@ -1,8 +1,14 @@
 @charset "utf-8";
 @import '~bulma/bulma.sass';
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 
 html,
 body {
   text-align: center;
   min-height: 100vh;
+  font-family: 'Poiret One', cursive;
+}
+
+svg {
+  flex: 1;
 }

@@ -7,12 +7,15 @@
       <Crewmate
         :color="crewmate"
         :is-suspected="suspects[crewmate] > 0"
+        :is-playing="suspects[crewmate] < 3"
         @suspect="suspect"
       />
       <div class="gommettes">
-        <div v-for="suspected in suspects[crewmate]" :key="suspected">
-          🔴
-        </div>
+        <div
+          v-for="suspected in suspects[crewmate]"
+          :key="suspected"
+          class="gommette"
+        ></div>
       </div>
     </div>
   </div>
@@ -46,16 +49,30 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+$size: 20px;
+$gommette_color: #b71540;
+
 .notebook {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
   .crewmate {
-    display: flex;
-    justify-content: space-around;
     align-items: center;
+    position: relative;
 
     .gommettes {
-      flex: 1;
-      display: flex;
-      justify-content: center;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+
+      .gommette {
+        width: $size;
+        height: $size;
+        background-color: $gommette_color;
+        border-radius: $size / 2;
+        margin: 5px;
+      }
     }
   }
 }

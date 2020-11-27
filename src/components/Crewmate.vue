@@ -1,6 +1,7 @@
 <template>
   <div class="crewmate" @click="suspect" :class="classProps">
     <svg
+      class="crew"
       style="enable-background:new 0 0 231.039368 231.039368;"
       version="1.1"
       viewBox="0 0 231.039368 231.039368"
@@ -66,6 +67,23 @@
         </g>
       </g>
     </svg>
+    <div v-if="!isPlaying" class="cross">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="100"
+        height="100"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="#b71540"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </div>
   </div>
 </template>
 
@@ -76,7 +94,8 @@ export default defineComponent({
   name: 'Crewmate',
   props: {
     color: { type: String, required: true },
-    isSuspected: { type: Boolean, required: true }
+    isSuspected: { type: Boolean, required: true },
+    isPlaying: { type: Boolean, required: true }
   },
   setup(props, root) {
     const primary = computed(() => ({
@@ -88,10 +107,12 @@ export default defineComponent({
       filter: 'brightness(70%)'
     }))
 
-    const suspect = () => root.emit('suspect', props.color)
+    const suspect = () =>
+      props.isPlaying ? root.emit('suspect', props.color) : null
 
     const classProps = computed(() => ({
-      suspect: props.isSuspected
+      suspect: props.isPlaying && props.isSuspected,
+      active: props.isPlaying
     }))
 
     return {
@@ -111,12 +132,28 @@ $size: 120px;
   width: $size;
   height: $size;
   margin: 1rem;
+  position: relative;
 
-  &:hover {
+  &.active:hover {
     cursor: pointer;
     background-color: rgba(#000000, 0.1);
     border-radius: 1rem;
   }
+}
+
+.cross {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(87, 101, 116, 0.2);
+  border-radius: 1rem;
 }
 
 .suspect {
@@ -144,6 +181,10 @@ $size: 120px;
   60% {
     transform: translate3d(3px, 0, 0);
   }
+}
+
+.crew {
+  flex: 1;
 }
 
 .st0 {

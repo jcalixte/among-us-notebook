@@ -1,5 +1,5 @@
 import { Crewmate } from '@/enums/Crewmate.enum'
-import { computed, reactive } from 'vue'
+import { reactive } from 'vue'
 
 const initialCrewmates = [
   Crewmate.Red,
@@ -23,9 +23,7 @@ const initialSuspects = initialCrewmates.reduce((acc, crewmate) => {
 
 export const useNotebook = () => {
   const suspects = reactive({ ...initialSuspects })
-  const crewmates = computed(() =>
-    initialCrewmates.filter((crewmate) => suspects[crewmate] < 3)
-  )
+  const crewmates = initialCrewmates
   const suspect = (crewmate: Crewmate) => {
     suspects[crewmate]++
   }

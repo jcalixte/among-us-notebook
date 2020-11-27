@@ -1,18 +1,17 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="@/assets/logo.png" />
-    <HelloWorld msg="Welcome to OVA Template!" />
+    <Notebook />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import HelloWorld from '@/components/HelloWorld.vue'
+import Notebook from '@/components/Notebook.vue'
 
 export default defineComponent({
   name: 'Home',
   components: {
-    HelloWorld
+    Notebook
   }
 })
 </script>

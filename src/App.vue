@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1 class="title is-1">Notebook</h1>
+    <h1 class="title is-1">{{ $t('notebook') }}</h1>
     <router-view />
   </div>
 </template>

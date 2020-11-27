@@ -1,5 +1,5 @@
 <template>
-  <h1 class="title is-1">{{ $t('notebook') }}</h1>
+  <h1 class="main-title title is-1">{{ $t('notebook') }}</h1>
   <router-view />
 </template>
 
@@ -13,4 +13,8 @@ export default defineComponent({
 
 <style lang="scss">
 @import 'styles/app';
+
+.main-title {
+  margin: 0 1rem;
+}
 </style>

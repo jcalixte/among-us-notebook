@@ -89,6 +89,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
+import Colr from 'colr'
 
 export default defineComponent({
   name: 'Crewmate',
@@ -103,8 +104,9 @@ export default defineComponent({
     }))
 
     const darkPrimary = computed(() => ({
-      fill: props.color,
-      filter: 'brightness(70%)'
+      fill: Colr.fromHex(props.color)
+        .darken(10)
+        .toHex()
     }))
 
     const suspect = () =>

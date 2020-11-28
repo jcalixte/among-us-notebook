@@ -126,7 +126,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-$size: 120px;
+$size: 107px;
 
 .crewmate {
   width: $size;

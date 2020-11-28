@@ -169,7 +169,7 @@ $size: 107px;
   }
 
   20%,
-  90% {
+  80% {
     transform: translate3d(1px, 0, 0);
   }
 
